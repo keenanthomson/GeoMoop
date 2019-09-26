@@ -1,0 +1,43 @@
+{
+  "name": "geomoop",
+  "version": "1.0.0",
+  "description": "Tool to visualize real estate price distribution by city and state.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keenanthomson/GeoMoop.git"
+  },
+  "keywords": [
+    "geochart",
+    "google",
+    "visualization",
+    "data",
+    "zillow",
+    "real",
+    "estate"
+  ],
+  "author": "Keenan Thomson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keenanthomson/GeoMoop/issues"
+  },
+  "homepage": "https://github.com/keenanthomson/GeoMoop#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-google-charts": "^3.0.15"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6"
+  }
+}
