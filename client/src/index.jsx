@@ -9,7 +9,8 @@ export const App = () => {
   useEffect(() => {
     axios
     .get('http://localhost:3001/US-MA/city')
-    .then((response) => console.log(JSON.parse(response)))
+    .then(response => console.log(response))
+    .catch(error => console.log(`Error --> `, error))
   }, []);
 
   return(
@@ -27,8 +28,7 @@ export const App = () => {
           ['Russia', 700],
         ]}
         options={{
-          displayMode: 'markers',
-
+          displayMode: 'markers'
         }}
         mapsApiKey="AIzaSyB0CkhQh8kVsw3goTeNsbDNlCrNOuo90Wg"
         rootProps={{ 'data-testid': '1' }}

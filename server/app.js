@@ -3,7 +3,7 @@ const app = express();
 const port = 3001;
 const cors = require('cors');
 const axios = require('axios');
-const jsdom = require("jsdom");
+const {JSDOM} = require('jsdom');
 
 app.use(cors());
 
@@ -19,13 +19,32 @@ app.get('/:state/:childtype', (req, res) => {
       }
     })
     .then((response) => {
+      // console.log(response.data)
+      const responseString = JSON.stringify(response.data)
+      const dom = (new JSDOM(responseString))
+      const data = {
+        prices: [],
+        cities: []
+      }
 
-      let parsed = JSON.stringify(response);
-      console.log(parsed)
-      // need to figure out solution that parses incoming data to region and pricing data only
-      // res.send();
+      /*
+      to improve, querySelectorAll("region") to get each record, then loop and pull
+      'name','zindex','latitude','longitude','url' for each region parent element
+      */ 
+
+      dom.window.document.querySelectorAll("zindex").forEach(elem => {
+        data.prices.push(elem.textContent);
+      });
+      dom.window.document.querySelectorAll("name").forEach(elem => {
+        data.cities.push(elem.textContent);
+      });
+      console.log(data)
+      res.send(`Zillow request completed.`);
     })
-    .catch((error) => console.log(`Error in Zillow get request --> `, error))
+    .catch((error) => {
+      console.log(`Error in Zillow get request --> `, error);
+      res.send(`Zillow request encountered error.`);
+    })
 });
 
 app.listen(port, () => {
