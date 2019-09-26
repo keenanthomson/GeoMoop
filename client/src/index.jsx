@@ -4,20 +4,13 @@ import {Chart} from 'react-google-charts';
 import axios from 'axios';
 
 export const App = () => {
-  const [region, setRegion] = useState('US-MA');
+  const [region, setRegion] = useState('US-MA'); // change this using a selector dropdown
 
   useEffect(() => {
     axios
-    .get('http://www.zillow.com/webservice/GetRegionChildren.htm', {
-      params: {
-        ZWSID: key,
-        state: 'MA',
-        childtype: 'city'
-      }
-    })
-    .then((response) => console.log(`RESPONSE --> `, response))
-    .catch((error) => console.log(`Error in Zillow get request --> `, error))
-    }, []);
+    .get('http://localhost:3001/US-MA/city')
+    .then((response) => console.log(JSON.parse(response)))
+  }, []);
 
   return(
       <Chart
@@ -31,9 +24,13 @@ export const App = () => {
           ['Brazil', 400],
           ['Canada', 500],
           ['France', 600],
-          ['RU', 700],
+          ['Russia', 700],
         ]}
-        mapsApiKey="AIzaSyAwyqQ9-uNiw6fIYQGFqeATlVZxmSwtOok"
+        options={{
+          displayMode: 'markers',
+
+        }}
+        mapsApiKey="AIzaSyB0CkhQh8kVsw3goTeNsbDNlCrNOuo90Wg"
         rootProps={{ 'data-testid': '1' }}
       />
   )

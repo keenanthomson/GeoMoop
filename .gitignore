@@ -35,4 +35,4 @@ bower_components/
 .flooignore
 
 # keys!
-# app-env.js
+cred.txt
