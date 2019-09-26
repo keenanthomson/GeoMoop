@@ -1,9 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import {Chart} from 'react-google-charts';
+import axios from 'axios';
 
-function App () {
+export const App = () => {
   const [region, setRegion] = useState('US-MA');
+
+  useEffect(() => {
+    axios
+    .get('http://www.zillow.com/webservice/GetRegionChildren.htm', {
+      params: {
+        ZWSID: key,
+        state: 'MA',
+        childtype: 'city'
+      }
+    })
+    .then((response) => console.log(`RESPONSE --> `, response))
+    .catch((error) => console.log(`Error in Zillow get request --> `, error))
+    }, []);
 
   return(
       <Chart
@@ -25,33 +39,4 @@ function App () {
   )
 }
 
-
 ReactDOM.render(<App/>, document.getElementById('regions_div'));
-
-  //   google.charts.load('current', {
-  //     'packages':['geochart'],
-  //     'mapsApiKey': 'AIzaSyAwyqQ9-uNiw6fIYQGFqeATlVZxmSwtOok'
-  //   });
-
-  //   google.charts.setOnLoadCallback(drawRegionsMap);
-
-  // function drawRegionsMap() {
-  //   var data = google.visualization.arrayToDataTable([
-  //     ['County','Income','Population'],
-  //     ['Norfolk', 75000, 2761477],
-  //     ['Barnstable', 70000, 2761477],
-  //     ['Middlesex', 65000, 2761477]
-  //   ]);
-
-  //   var options = {
-  //     region: {region},
-  //     sizeAxis: 400,
-  //     displayMode: 'markers',
-  //     resolution: 'provinces',
-  //     magnifyingGlass: {enable: true, zoomFactor: 7.5}
-  //     // enableRegionInteractivity: true
-  //   };
-
-  //   var chart = new google.visualization.GeoChart(document.getElementById(container));
-
-  //   chart.draw(data, options);
