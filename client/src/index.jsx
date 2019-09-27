@@ -5,32 +5,41 @@ import axios from 'axios';
 
 export const App = () => {
   const [region, setRegion] = useState('US-MA'); // change this using a selector dropdown
-  const [priceData, setPriceData] = useState(['City', 'zindex'])
+  const [priceData, setPriceData] = useState(undefined)
+  
   useEffect(() => {
     axios
     .get(`http://localhost:3001/${region}/city`)
-    .then(response => setPriceData(response))
+    .then(response => {
+      console.log(response.data)
+      setPriceData(response.data)
+    })
     .catch(error => console.log(`Error --> `, error))
   }, []);
 
-  return(
-      <Chart
-        width={'500px'}
-        height={'300px'}
-        chartType="GeoChart"
-        data={[
-          ['City', 'zindex']
-
-        ]}
-        options={{
-          region: 'US-MA',
-          displayMode: 'markers',
-          resolution: 'provinces',
-        }}
-        mapsApiKey="AIzaSyB0CkhQh8kVsw3goTeNsbDNlCrNOuo90Wg"
-        rootProps={{ 'data-testid': '1' }}
-      />
-  )
+  if (priceData) {
+    return(
+        <Chart
+          width={'500px'}
+          height={'300px'}
+          chartType="GeoChart"
+          data={
+    //         [ [ 'City', 'zindex' ],
+    // [ 'West Harwich', '439100' ]]
+    {priceData}
+          }
+          options={{
+            region: 'US-MA',
+            displayMode: 'markers',
+            resolution: 'provinces',
+          }}
+          mapsApiKey="AIzaSyB0CkhQh8kVsw3goTeNsbDNlCrNOuo90Wg"
+          rootProps={{ 'data-testid': '1' }}
+        />
+    )
+  } else {
+    return <div>LOADING.....</div>
+  }
 }
 
 ReactDOM.render(<App/>, document.getElementById('regions_div'));

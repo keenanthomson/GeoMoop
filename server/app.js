@@ -33,11 +33,9 @@ app.get('/:state/:childtype', (req, res) => {
           let zindex = $($(responseRecords[i]).find('zindex')).html()
           newRecord.push(name)
           newRecord.push(zindex);
-          name === undefined ? null : stateData.push(newRecord);
+          zindex === undefined ? null : name === undefined ? null : stateData.push(newRecord);
         }
       }
-
-      console.log(stateData)
       res.send(stateData);
     })
     .catch((error) => {
