@@ -19,7 +19,6 @@ app.get('/:state/:childtype', (req, res) => {
       }
     })
     .then((response) => {
-      // const stateData = [['City', 'zindex']]
       const stateData = [['latitude', 'longitude', 'name', 'zindex']]
       parseData(response.data);
 
@@ -37,7 +36,8 @@ app.get('/:state/:childtype', (req, res) => {
           newRecord.push(Number(longitude));
           newRecord.push(name)
           newRecord.push(Number(zindex));
-          zindex === undefined ? null : stateData.push(newRecord);
+          zindex === undefined ? null : stateData.push(newRecord); // this method excludes cities with no zindex
+          // stateData.push(newRecord);
         }
       }
       console.log(stateData)
