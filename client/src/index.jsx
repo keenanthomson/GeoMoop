@@ -10,35 +10,33 @@ export const App = () => {
   useEffect(() => {
     axios
     .get(`http://localhost:3001/${region}/city`)
-    .then(response => {
-      console.log(response.data)
-      setPriceData(response.data)
-    })
+    .then(response => setPriceData(response.data))
     .catch(error => console.log(`Error --> `, error))
   }, []);
 
   if (priceData) {
+    console.log(priceData)
     return(
         <Chart
-          width={'500px'}
-          height={'300px'}
+          width={'1000px'}
+          height={'600px'}
           chartType="GeoChart"
           data={
-    //         [ [ 'City', 'zindex' ],
-    // [ 'West Harwich', '439100' ]]
-    {priceData}
+          // [["latitude", "longitude","zindex"],["42.313374","-71.047625","439100"]]
+          priceData
           }
           options={{
             region: 'US-MA',
             displayMode: 'markers',
             resolution: 'provinces',
+            // colorAxis: {colors: ['blue', 'green']}
           }}
           mapsApiKey="AIzaSyB0CkhQh8kVsw3goTeNsbDNlCrNOuo90Wg"
           rootProps={{ 'data-testid': '1' }}
         />
     )
   } else {
-    return <div>LOADING.....</div>
+    return (<div margin={'20px'}>LOADING...</div>)
   }
 }
 
