@@ -16,7 +16,6 @@ export const App = () => {
 
   const updateRegionData = async (newRegion = region) => {
     await setLoading(true);
-    console.log(`loading state = ${loading}`)
     axios
     .get(`http://localhost:3001/${newRegion}/city`)
     .then(response => {
@@ -35,7 +34,7 @@ export const App = () => {
   // }
 
   const loadingDivStyling = {
-    margin: '300px 500px'
+    margin: '200px 300px'
   }
 
   const options = ['US-AL','US-AK','US-AZ','US-AR','US-CA','US-CO','US-CT','US-DE','US-DC','US-FL','US-GA','US-HI','US-ID','US-IL','US-IN','US-IA','US-KS','US-KY','US-LA','US-ME','US-MT','US-NE','US-NV','US-NH','US-NJ','US-NM','US-NY','US-NC','US-ND','US-OH','US-OK','US-OR','US-MD','US-MA','US-MI','US-MN','US-MS','US-MO','US-PA','US-RI','US-SC','US-SD','US-TN','US-TX','US-UT','US-VT','US-VA','US-WA','US-WV','US-WI','US-WY'];
@@ -65,10 +64,10 @@ export const App = () => {
           />
         </div>
         <div>
-          <select zindex={2} selected={region} onChange={(e) => updateRegionData(e.target.value)}>
+          <select zindex={2} selected={region} defaultValue={region} onChange={(e) => updateRegionData(e.target.value)}>
             {options.map((elem, index) => {
               if (elem === region) {
-                return <option value={elem} key={index} defaultValue="selected">{elem}</option>
+                return <option value={elem} key={index} defaultValue={region}>{elem}</option>
               } else {
                 return <option value={elem} key={index}>{elem}</option>
               }
