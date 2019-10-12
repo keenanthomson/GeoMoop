@@ -12,7 +12,6 @@ export const App = () => {
   
   useEffect(() => {
     updateRegionData();
-    // setLoading(false);
   }, []);
 
   const updateRegionData = async (newRegion = region) => {
