@@ -35,4 +35,5 @@ bower_components/
 .flooignore
 
 # keys!
-cred.txt
+.env
+map.js
