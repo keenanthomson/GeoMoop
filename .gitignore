@@ -37,3 +37,4 @@ bower_components/
 # keys!
 .env
 map.js
+bundle.js
