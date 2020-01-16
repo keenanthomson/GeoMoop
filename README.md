@@ -1,7 +1,7 @@
-# GeoMoop
-> Tool to visualize real estate price distribution by city and state.
+# RealEstateViz
+> Tool for visualizing real estate price distribution by city and state.
 
-![Image of v1.0 GeoMoop](giphy.gif)
+![Image of v1.0](giphy.gif)
 
 Currently limited to states with Zillow index pricing:
 
