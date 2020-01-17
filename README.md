@@ -3,7 +3,7 @@
 
 ![Image of v1.0](giphy.gif)
 
-Currently limited to states with Zillow index pricing:
+Currently limited to states with Zillow index pricing.
 
 Planned features include:
 - MLS pricing integration
