@@ -1,5 +1,5 @@
 # RealEstateViz
-> Tool for visualizing real estate price distribution by city and state.
+> Tool for visualizing real estate price distribution using the Zillow API and Google Charts.
 
 ![Image of v1.0](giphy.gif)
 
