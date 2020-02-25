@@ -22,15 +22,10 @@ export default function App () {
       setRegion(newRegion)
     })
     .then(() => {
-      console.log(`loading state = ${loading}`);
       setTimeout(() => setLoading(false), 1000);
     })
     .catch(error => console.log(`Error --> `, error))
   }
-
-  // const selectRegion = (e) => {
-  //   updateRegionData(e);
-  // }
 
   const loadingDivStyling = {
     margin: '200px 300px'

@@ -10,8 +10,6 @@ const {zillowKey} = require('../map.js')
 app.use(cors());
 app.use(express.static('./client/dist'));
 
-// console.log(process.env)
-
 app.get('/:state/:childtype', (req, res) => {
   console.log(`params -> ${req.params.state}, ${req.params.childtype}`)
   axios
@@ -41,11 +39,8 @@ app.get('/:state/:childtype', (req, res) => {
           newRecord.push(name)
           newRecord.push(Number(zindex));
           zindex === undefined ? null : stateData.push(newRecord); // this method excludes cities with no zindex
-          // stateData.push(newRecord);
         }
-
       }
-      // console.log(stateData)
       res.send(JSON.stringify(stateData))
     })
     .catch((error) => {
