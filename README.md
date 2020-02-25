@@ -1,9 +1,9 @@
-# GeoMoop
-> Tool to visualize real estate price distribution by city and state.
+# RealEstateViz
+> Tool for visualizing real estate price distribution using the Zillow API and Google Charts.
 
-![Image of v1.0 GeoMoop](giphy.gif)
+![Image of v1.0](giphy.gif)
 
-Currently limited to states with Zillow index pricing:
+Currently limited to states with Zillow index pricing.
 
 Planned features include:
 - MLS pricing integration
