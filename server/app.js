@@ -45,7 +45,7 @@ app.get('/:state/:childtype', (req, res) => {
         }
 
       }
-      console.log(stateData)
+      // console.log(stateData)
       res.send(JSON.stringify(stateData))
     })
     .catch((error) => {

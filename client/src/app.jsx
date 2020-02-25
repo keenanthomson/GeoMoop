@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import {Chart} from 'react-google-charts';
 import axios from 'axios';
 import {mapKey} from '../../map.js';
 import 'react-dropdown/style.css';
 
-export const App = () => {
+export default function App () {
   const [region, setRegion] = useState('US-MA'); // change this using a selector dropdown
-  const [priceData, setPriceData] = useState(undefined) ;
+  const [priceData, setPriceData] = useState(undefined);
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
@@ -78,5 +77,3 @@ export const App = () => {
     )
   }
 }
-
-ReactDOM.render(<App/>, document.getElementById('regions_div'));
